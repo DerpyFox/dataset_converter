@@ -7,6 +7,9 @@ First script have 1 variable -> name of original data table.
 Second script have 3 variables -> first variable is generated from first script, second variable is type of data, "organism_name" or "taxid", recommended to use "taxid" for now, third variable is name for new generated table.
 Third script have 2 variables -> first variable is generated from second script, second variable is name for new generated table.
 
+Program needs to be executed from R enviroment.
+https://docs.anaconda.com/free/anaconda/packages/using-r-language/
+
 Needed libraries to execute:
 Python: numpy, pandas, ete3.
 R: data.table, httr, tidyverse, biomartr.
