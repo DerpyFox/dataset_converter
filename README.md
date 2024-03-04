@@ -11,8 +11,9 @@ Program needs to be executed from R enviroment.
 https://docs.anaconda.com/free/anaconda/packages/using-r-language/
 
 Needed libraries to execute:
-Python: numpy, pandas, ete3.
+Python: numpy, pandas, ete3, matplotlib.
 R: data.table, httr, tidyverse, biomartr.
 To install biomartr, check https://cran.r-project.org/web/packages/biomartr/readme/README.html, installation.
 
 To execute run: python3 master_.py
+Updated: add installation_detailed.
