@@ -97,5 +97,41 @@ plt.show()
 print("Финальная корреляция")
 print(correlation)
 
-file_path = 'resourses/three_sc_res.csv'
-merged_df.to_csv(file_path, index=False)
+#file_path = 'resourses/three_sc_res.csv'
+#merged_df.to_csv(file_path, index=False)
+
+counts = merged_df['organism_name'].value_counts()
+print("Количество найденных геномов с копиями\n" ,counts)
+
+import pandas as pd
+
+def clean_dataframe(df):
+    unique_organisms = df['organism_name'].unique()
+    
+    for organism in unique_organisms:
+        organism_indices = df[df['organism_name'] == organism].index
+        
+        if len(organism_indices) == 1:
+            continue
+        
+        gcf_indices = [i for i in organism_indices if df.loc[i, 'gbrs_paired_asm'].startswith('GCF')]
+        gca_indices = [i for i in organism_indices if df.loc[i, 'gbrs_paired_asm'].startswith('GCA')]
+        na_indices = [i for i in organism_indices if df.loc[i, 'gbrs_paired_asm'] == 'na']
+        
+        if gcf_indices:
+            df.drop(gcf_indices[1:] + gca_indices + na_indices, inplace=True)
+        elif gca_indices:
+            df.drop(gca_indices[1:] + na_indices, inplace=True)
+        else:
+            df.drop(na_indices[1:], inplace=True)
+    
+    return df
+
+cleaned_df = clean_dataframe(merged_df)
+
+counts = cleaned_df['organism_name'].value_counts()
+print("Количество найденных геномов без копий\n", counts)
+
+cleaned_df = cleaned_df.reset_index(drop=True)
+file_path = 'no_copy_res_final.csv'
+cleaned_df.to_csv(file_path, index=False)

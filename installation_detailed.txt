@@ -1,0 +1,28 @@
+1. install r-base, r-essentials 
+https://docs.anaconda.com/free/working-with-conda/packages/using-r-language/
+2. bash: conda create -n r_env_test r-essentials r-base
+proceed? y
+3. bash: conda activate r_env_test
+4. bash: r
+https://www.biostars.org/p/450316/
+5. bash: install.packages("tidyverse")
+6. Use mirror -> 73 -> 12 (for novosibirsk)
+7. bash: install.packages("httr")
+8. bash: install.packages("data.table")
+9. bash: 
+if (!requireNamespace("BiocManager"))
+    install.packages("BiocManager")
+BiocManager::install()
+BiocManager::install("Biostrings")
+BiocManager::install("biomaRt")
+10. update all if asked
+
+11. bash:
+install.packages("biomartr", dependencies = TRUE)
+BiocManager::install("ropensci/biomartr")
+12. bash: quit() //
+13. pip install numpy
+14. pip install pandas
+15. pip install ete3
+16. pip install matplotlib
+17. python3 master_.py
